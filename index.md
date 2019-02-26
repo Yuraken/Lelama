@@ -1,49 +1,76 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-	<meta charset="utf-8">
-	<title>TP 2 Lazy Load</title>
-	<style type="text/css">
-
-		body{
-		margin: 0;
-
-		}
-		.meublage{
-			height: 100vh;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Maouw</title>
+    <style>
+        body{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-auto-rows: 400px;
+            grid-gap: 10px;
+            padding: 0 25% 0 25%;
+        }
+        div{
+            background: #000;
+            color: #FFF;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        .anim{
+            transition: 0.4s;
+            opacity: 1;
+            transform:translateX(0);
+        }
+    </style>
 </head>
 <body>
-	<div class="scroll" >
-		<div class="Le meublage">
-			
-		</div>
-		<div class="Le meublage">
-			
-		</div>
-		<div class="Le meublage">
-			
-		</div>
-		<img data-lazy=https://previews.123rf.com/images/annamoskvina/annamoskvina1604/annamoskvina160400233/55833475-llama-lama-smile-and-for-fun-children.jpg alt="Une belle image" style="height: 400px; width: 200px;">
+    <div data-class=anim></div>
+    <div data-class=anim></div>
+    <div data-class=anim></div>
 
+    <div data-class=anim></div>
+    <div data-class=anim data-offset=300></div>
+    <div data-class=anim data-offset=300></div>
 
-	</div>
-	
+    <div data-class=anim data-offset=300></div>
+    <div data-class=anim data-offset=300></div>
+    <div data-class=anim data-delay=1000>d1</div>
 
-</body>
-<script type="text/javascript">
-	window.addEventListener("scroll", lazy);
-        
-        function lazy(){
-            document.querySelectorAll("[data-lazy]").forEach(function(img){
-                if(img.getBoundingClientRect().y < window.innerHeight + 300){
-                    img.src = img.dataset.lazy;
-                    img.removeAttribute("data-lazy");
-                }
-            });
+    <div data-class=anim data-delay=600></div>
+    <div data-class=anim data-delay=800></div>
+    <div data-class=anim data-delay=1000></div>
+
+    <div data-class=anim data-delay=600></div>
+    <div data-class=anim data-delay=800></div>
+    <div data-class=anim data-delay=1000></div>
+
+    <div data-class=anim data-delay=600></div>
+    <div data-class=anim data-delay=800></div>
+    <div data-class=anim data-delay=1000></div>
+
+    <div data-class=anim data-delay=600></div>
+    <div data-class=anim data-delay=800></div>
+    <div data-class=anim data-delay=1000></div>
+
+    <div data-class=anim data-delay=600></div>
+    <div data-class=anim data-delay=800></div>
+    <div data-class=anim data-delay=1000></div>
+
+    <script>
+        document.addEventListener("scroll", addClass, {passive: true});
+        function addClass(){
+            document.querySelectorAll("[data-class]").forEach(e=>{
+                if(e.getBoundingClientRect().y < window.innerHeight - (e.dataset.offset || 0)){
+                    setTimeout(()=>{
+                        e.classList.add(e.dataset.class);
+					    e.removeAttribute("data-class");
+                    }, e.dataset.delay || 0)
+				}
+            })
         }
-        
-        lazy();
-
-</script>
+        addClass();
+    </script>
+</body>
 </html>
