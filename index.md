@@ -1,15 +1,49 @@
-<h1> Richard cette chaudière</h1>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TP 2 Lazy Load</title>
+	<style type="text/css">
 
-<img src="https://ixxidesign.azureedge.net/media/2391858/ixxi-paul-fuentes-fashion-lama.jpg?mode=crop&width=275&height=275" width="500" height="500">
+		body{
+		margin: 0;
 
-<div data-class=anim> Maouw </div>
+		}
+		.meublage{
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+	<div class="scroll" >
+		<div class="Le meublage">
+			
+		</div>
+		<div class="Le meublage">
+			
+		</div>
+		<div class="Le meublage">
+			
+		</div>
+		<img data-lazy=image.jpg alt="Une belle image" style="height: 400px; width: 200px;">
 
-<script>
-"use strict";
- 
-window.addEventlistener("load", function() {
-    window.addEventListener("mousewheel", function() {
-        // ...
-    });
-});
+
+	</div>
+	
+
+</body>
+<script type="text/javascript">
+	window.addEventListener("scroll", lazy);
+        
+        function lazy(){
+            document.querySelectorAll("[data-lazy]").forEach(function(img){
+                if(img.getBoundingClientRect().y < window.innerHeight + 300){
+                    img.src = img.dataset.lazy;
+                    img.removeAttribute("data-lazy");
+                }
+            });
+        }
+        
+        lazy();
+
 </script>
+</html>
