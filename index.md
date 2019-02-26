@@ -24,7 +24,7 @@
 		<div class="Le meublage">
 			
 		</div>
-		<img data-lazy=image.jpg alt="Une belle image" style="height: 400px; width: 200px;">
+		<img data-lazy=https://previews.123rf.com/images/annamoskvina/annamoskvina1604/annamoskvina160400233/55833475-llama-lama-smile-and-for-fun-children.jpg alt="Une belle image" style="height: 400px; width: 200px;">
 
 
 	</div>
